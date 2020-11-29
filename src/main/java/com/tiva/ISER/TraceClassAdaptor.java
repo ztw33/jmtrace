@@ -11,7 +11,9 @@ public class TraceClassAdaptor extends ClassVisitor {
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        System.out.println("method name: " + name);
+//        if (name.startsWith("<")) {
+//            return this.cv != null ? this.cv.visitMethod(access, name, descriptor, signature, exceptions) : null;
+//        }
         return this.cv != null ? new TraceMethodAdaptor(this.cv.visitMethod(access, name, descriptor, signature, exceptions)) : null;
     }
 }

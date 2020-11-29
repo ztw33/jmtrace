@@ -28,3 +28,4 @@ hs_err_pid*
 # For this project
 META-INF
 target
+.DS_Store
