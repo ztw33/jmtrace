@@ -26,6 +26,5 @@ hs_err_pid*
 .idea
 
 # For this project
-META-INF
 target
 .DS_Store

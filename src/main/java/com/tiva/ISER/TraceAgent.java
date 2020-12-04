@@ -4,7 +4,6 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 
-import java.io.FileOutputStream;
 import java.lang.instrument.Instrumentation;
 
 public class TraceAgent {
@@ -20,14 +19,6 @@ public class TraceAgent {
             ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
             ClassVisitor cv = new TraceClassAdaptor(cw);  // Adaptor: 适配器模式，TraceClassAdaptor适配ClassWriter
             cr.accept(cv, 0);
-            FileOutputStream fos = null;
-//            try {
-//                fos = new FileOutputStream("new.class");
-//                fos.write(cw.toByteArray());
-//                fos.close();
-//            } catch (java.io.IOException e) {
-//                e.printStackTrace();
-//            }
             return cw.toByteArray();
         });
     }
